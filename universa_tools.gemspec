@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Universa blockchain tools}
   spec.description   = %q{Extended command line and library tools to deal with Universa blockchain. Based on unversa gem}
-  spec.homepage      = "TODO: Put github public repo URL here."
+  spec.homepage      = "https://github.com/sergeych/universa_tools"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
