@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/exe/uniring" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/universa_tools/commons.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/universa_tools/keyring.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/universa_tools.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/universa_tools.gemspec" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,12 +16,25 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Ruby File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1PmeZJyZLVZM3I0K1I3mIOZWCHo" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -47,7 +64,7 @@
       <updated>1566483921997</updated>
       <workItem from="1566483923242" duration="15000" />
       <workItem from="1566483945481" duration="45000" />
-      <workItem from="1566484011256" duration="1076000" />
+      <workItem from="1566484011256" duration="5210000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1566484458753</created>
@@ -56,7 +73,21 @@
       <option name="project" value="LOCAL" />
       <updated>1566484458753</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="preparing for stub release">
+      <created>1566485639068</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1566485639068</updated>
+    </task>
+    <task id="LOCAL-00003" summary="preparing for stub release/1">
+      <created>1566485689328</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1566485689328</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -77,6 +108,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial" />
+    <MESSAGE value="preparing for stub release" />
+    <MESSAGE value="preparing for stub release/1" />
+    <option name="LAST_COMMIT_MESSAGE" value="preparing for stub release/1" />
   </component>
 </project>

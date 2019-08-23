@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'ansi/code'
+require 'io/console'
+begin
+  $:.unshift File.expand_path(File.dirname(__FILE__) + "/../lib")
+  require 'universa_tools'
+rescue LoadError => e
+  require 'universa_tools'
+end
+
+require 'universa_tools/uniring'
