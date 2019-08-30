@@ -1,12 +1,5 @@
 module UniversaTools
 
-  class MessageException < Exception;
-  end
-
-  def error message
-    raise MessageException, message
-  end
-
   using Universa
 
   def human_to_i value, factor = 1000
@@ -28,6 +21,27 @@ module UniversaTools
     hh, mm = mm.divmod(60)
     "%d:%02d:%02d" % [hh, mm, ss]
   end
+
+  def run_options_parser(opt_parser, &command_parser)
+    commands = opt_parser.order!
+    if @tasks.empty? && commands.empty?
+      puts opt_parser.banner
+      puts "\nnothing to do. Use -h for help\n"
+    else
+      @tasks.each { |t| t.call }
+      command_parser&.call(commands)
+    end
+  rescue MessageException, OptionParser::ParseError => e
+    STDERR.puts ANSI.red { ANSI.bold { "\nError: #{e}\n" } }
+    exit(1000)
+  rescue Interrupt
+    exit(1010)
+  rescue
+    STDERR.puts ANSI.red { "\n#{$!.backtrace.reverse.join("\n")}\n" }
+    STDERR.puts ANSI.red { ANSI.bold { "Error: #$! (#{$!.class.name})" } }
+    exit(2000)
+  end
+
 
 end
 

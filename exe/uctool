@@ -1,0 +1,94 @@
+#!/usr/bin/env ruby
+
+require 'ansi/code'
+require 'io/console'
+require 'optionparser'
+
+begin
+  $:.unshift File.expand_path(File.dirname(__FILE__) + "/../lib")
+  require 'universa_tools'
+rescue LoadError => e
+  require 'universa_tools'
+end
+require 'universa_tools/commons'
+
+Universa::Service.log_umi
+
+class UCTool
+
+  extend UniversaTools
+  include UniversaTools
+
+  def initialize
+    @tasks = []
+    @parser = OptionParser.new { |opts|
+      opts.on("-r", "--register", "register successfully checked contracts") {
+        @register = true
+      }
+    }
+    run_options_parser(@parser) do |names|
+      names.each { |name| show_contract_info name }
+    end
+
+  end
+
+  def header str
+    "\n" + ANSI.yellow { ANSI.bold { str } }
+  end
+
+  def show_contract_info name
+    contract = Universa::Contract.from_packed(open(name, 'rb') { |f| f.read })
+    puts header("File:\t") + name
+    puts header("ID:\n\t") + ANSI.bold { contract.hash_id.to_s }
+    signers = contract.getSealedByKeys()
+    puts header("Signed by:")
+    signers.each_with_index { |k, i|
+      puts "#{i}\t#{ANSI.bold { k.short_address }}"
+      puts "\t#{ANSI.bold { k.long_address }}"
+    }
+    puts header("Roles:")
+    signers = Set.new(signers)
+    contract.getRoles().each { |name, role|
+      allowed = role.isAllowedForKeys(signers)
+      n = allowed ? ANSI.green { ANSI.bold { name } } : name
+      puts "\t#{ allowed ? '[*]' : '[ ]' } #{n}"
+    }
+
+    puts header("Check:")
+    contract.check
+    errors = contract.getErrors
+    if errors.size == 0
+      puts "\tno errors"
+    else
+      errors.each { |e|
+        puts "\t#{e.getObjectName()}: #{e.getError()}: #{e.getMessage()}"
+      }
+    end
+
+    if @register && errors.size == 0
+      STDOUT << "\nRegistering..."
+      client = Universa::Client.new(private_key: main_key)
+      result = client.register_single(contract, timeout: 90)
+      STDOUT << "\rRegistration result: #{result}"
+      if !result.approved?
+        puts "Not approved, errors:"
+        result.errors.each { |e|
+          p e
+          p e[:error]
+          puts "\t#{e.error}: #{e.message}"
+        }
+      end
+    end
+  end
+
+  def main_key
+    @main_key ||= Universa::PrivateKey.new(
+        open(File.expand_path('~/.universa/network_admin.private.unikey'), 'rb') { |f| f.read })
+  rescue
+    error "Failed to open main key: #$!"
+  end
+
+
+end
+
+UCTool.new
