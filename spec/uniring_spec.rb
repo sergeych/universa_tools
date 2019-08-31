@@ -28,15 +28,24 @@ RSpec.describe UniversaTools do
     # duplicate key error
     expect(->{kr.add_key test_keys[4], "sample tag1"}).to raise_error(ArgumentError)
 
-    kr1 = KeyRing.new(@tmpfolder, readonly: true, password: "123123")
+    kr1 = KeyRing.new(@tmpfolder, password: "123123")
     kr1["sample tag1"].should == test_keys[0]
     kr1["sample tag2"].should == test_keys[2]
     kr1["sample tag3"].should == test_keys[3]
 
+    kr1.add_key test_keys[1], "sample tag1-1", foo: 'bar'
+    kr1["sample tag1-1"].should == test_keys[1]
+
     puts `ls #@tmpfolder/`
   end
 
-  it "suports readonly"
+  it "suports readonly" do
+    kr = KeyRing.new(@tmpfolder, generate: true, password: '123123')
+    kr.add_key test_keys[0], "sample tag1", foo: 'bar'
+
+    kr1 = KeyRing.new(@tmpfolder, readonly: true, password: "123123")
+    expect(->{kr1.add_key test_keys[1], "sample tag1-1", foo: 'bar'}).to raise_error(IOError)
+  end
 
 
 end
