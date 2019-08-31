@@ -3,11 +3,9 @@
 # so everything that could be large than say 128 bytes should be encrypted using a key stored
 # as plaintext in the KR.
 #
-# This class is not directly instantiable, use one of its ancestors, like KeyRecordPbkdf2, or decode packed
+# This class is not directly instantiable, use one of its ancestors, like {Pbkdf2CryptoRecord}, or decode packed
 # binary record.
-class KeyRecord
-
-
+class CryptoRecord
   # Unpack single KeyRecord packed into binary form.
   def self.from_packed packed
     decode_array(Boss.load(packed))
@@ -26,7 +24,7 @@ class KeyRecord
 
   # Pack many key records into single binary packed form. To unpack it ise {unpack_all}
   #
-  # @param [Array(KeyRecord)] records to pack
+  # @param [Array(CryptoRecord)] records to pack
   # @return [Binary] binary packed string.
   def self.pack_all(records)
     # hack: we call private method, we do not want to make it public
@@ -59,7 +57,7 @@ class KeyRecord
     code, *params, encpypted_key = *packed_array
     case code
       when 1
-        KeyRecordPbkdf2.new(params, encpypted_key)
+        Pbkdf2CryptoRecord.new(params, encpypted_key)
       else
         raise ArgumentError, "unknown KR code #{code}"
     end
@@ -70,7 +68,7 @@ end
 # PBKDF2 KeyRecord. Allow safely using passwords, carrying all necessary information to re-derive key later.
 # Allow using only part of the PBKDF2 derived data as a key, so more than one key could be derived from the same
 # password cryptographically safe and independently.
-class KeyRecordPbkdf2 < KeyRecord
+class Pbkdf2CryptoRecord < CryptoRecord
 
   HASH_CODES = [
       "com.icodici.crypto.digest.Sha256", # 0
@@ -90,7 +88,7 @@ class KeyRecordPbkdf2 < KeyRecord
   end
 
   # Encrypt plaintext deriving key from a given password
-  # @return [KeyRecordPbkdf2] self
+  # @return [Pbkdf2CryptoRecord] self
   def encrypt(password, plaintext)
     plaintext = plaintext.force_encoding('binary')
     encrypt_with_key(derive_key(password), plaintext)

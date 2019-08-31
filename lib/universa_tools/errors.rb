@@ -15,7 +15,7 @@ module UniversaTools
 
   class NotFoundException < CodeException
     def initialize object
-      super(:file_not_found, "not fould: #{object}")
+      super(:file_not_found, "not found: #{object}")
     end
   end
 

@@ -1,3 +1,5 @@
+require 'ansi/code'
+
 module UniversaTools
 
   using Universa
@@ -42,6 +44,32 @@ module UniversaTools
     exit(2000)
   end
 
+  def todo!(text)
+    raise NotImplementedError, text
+  end
 
+  def error_style(message = nil)
+    message ||= yield
+    ANSI.bold { ANSI.red { message } }
+  end
+
+  alnums = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  ALNUMS = (alnums + alnums.downcase + '_' + '0123456789').chars.to_ary
+  NUMBERS = "0123456789".chars.to_ary
 end
+
+class Integer
+  def random_alnums
+    to_i.times.map { UniversaTools::ALNUMS.sample }.join('')
+  end
+
+  def random_digits
+    to_i.times.map { UniversaTools::NUMBERS.sample }.join('')
+  end
+
+  def random_bytes
+    to_i.times.map { rand(256).chr }.join('').force_encoding('binary')
+  end
+end
+
 
