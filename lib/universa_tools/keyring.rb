@@ -160,7 +160,6 @@ module UniversaTools
         @key_addresses[kr.key.long_address.to_s] = kr
         @key_tags[kr.tag] = kr if kr.tag
       }
-
     end
 
     # dead existing ring configuration, needs to unlock after it.
