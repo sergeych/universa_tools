@@ -15,7 +15,6 @@ include Universa
 
 class Uniring
 
-  include Singleton
   include UniversaTools
 
   attr :option_parser
@@ -27,20 +26,17 @@ class Uniring
     @commands = {}
     @term_width = ANSI::Terminal.terminal_width
     init_opts &block
-    init_commands()
   end
 
   def run
-    run_options_parser @option_parser do
-      name, args = ARGV[0], ARGV[1..]
-      if (c = @commands[name])
-        if c.dispatcher
-          c.dispatcher.call(args)
+    run_options_parser @option_parser, tasks_before_commands: false do
+      case ARGV.length
+        when 0
+          # OK, run as usual
+        when 1
+          @keyring_path = ARGV[0]
         else
-          self.send :"cmd_#{name}", *args
-        end
-      else
-        error("command not found: #{name}")
+          error("illegal arguments")
       end
     end
   end
@@ -66,86 +62,171 @@ Usage:
         @term_width = size
       }
 
-
-      opts.on("--ring FILENAME", "use  specified file name as a key ring, default is #{@keyring_path}") { |path|
-        @keyring_path = path
+      opts.on("--all", "allow delete/update more than one key at a time") {
+        @allow_all = true
       }
 
-      opts.on("--init", "initialize new keyring. Does not change any existing keyring") {
+      opts.on("-p PASSWORD", "--password PASSWORD", "specify password in the command line") { |x|
+        @password = x
+      }
+
+      opts.on("-a [TAG,]KEY_FILE", "--add [TAG,]KEYFILE", Array) { |tag, file_name|
         task {
-          File.exist?(@keyring_path) and error("key ring already exists at #@keyring_path")
+          if !file_name
+            tag, file_name = file_name, tag
+          end
+          file_name, password = file_name.split(':', 2)
+          begin
+            keyring.add_key load_key(file_name, password), tag
+            puts success_style("\nKey added\n")
+          rescue ArgumentError
+            error "key already in ring"
+          end
         }
       }
+
+      opts.on("-d prefix", "--delete prefix", "delete key by beginning of its key address or a tag",
+              "this method prompts confirmation works only if exactly one",
+              "matching key exists") { |part| task {
+        keys = keyring.matching_records(part)
+        case keys.size
+          when 0
+            error "no matching keys found"
+          when 1
+            delete_keys(keys)
+          else
+            if @allow_all
+              delete_keys(keys)
+            else
+              puts error_style("\nMore than one key matches the criteria:")
+              keys.each { |kr| show_record kr }
+              error "Only one key could be deleted unless --all is specified"
+            end
+        end
+      } }
+
+      opts.on("-l", "--list") {
+        task {
+          keyring # this may ask for password so do it first
+          puts "--" * 40
+          puts ANSI.yellow { "KeyRing v.#{keyring.version.to_s}: " } + ANSI.bold { @keyring_path }
+          puts "--" * 40
+          keyring.keys.sort_by { |x| x&.tag || '' }.each(&method(:show_record))
+          if (keyring.keys.size > 0)
+            puts "--" * 40
+            puts "#{keyring.keys.size} key(s)\n"
+          else
+            puts "\nno keys\n"
+          end
+        }
+      }
+
+      opts.on("--init", "-i", "initialize new keyring. Does not change any existing keyring") {
+        task {
+          @keyring = KeyRing.new(@keyring_path, password: @password, password_proc: ->(x) { self.request_password2 x },
+                                 generate: true, override: @force_init)
+          puts success_style("keyring has been created")
+        }
+      }
+
+      opts.on("--force", "with --init, deletes existing reing if exists") {
+        @force_init = true
+      }
+
       initializer&.call(opts)
+
     }
-  end
-
-  class << self
-    extend Forwardable
-    def_delegators :instance, *Uniring.instance_methods(false)
-  end
-
-  def cmd_list
-    puts "Listing contents of #@keyring_path:"
-    keyring
   end
 
   def keyring
-    @keyring ||= KeyRing.new(@keyring_path, password: -> { keyring_password})
+    @keyring ||=
+        begin
+          print ANSI.faint { "trying to open keyring #{@keyring_path}" }
+          KeyRing.new(@keyring_path, password: @password, password_proc: -> (x) { self.request_password(x) } )
+        rescue Farcall::RemoteError => e
+          if e.message =~ /HMAC authentication failed/
+            error("wrong keyring password or broken ring")
+          else
+            raise e
+          end
+        ensure
+          print "\r" + ' ' * 79 + "\r"
+        end
   end
 
   def keyring_password
-    @keyring_password ||= begin
-      "1234567890"
+    @keyring_password
+  end
+
+  def request_password2(prompt)
+    loop do
+      psw1 = request_password prompt
+      psw2 = request_password "please re-enter the password"
+      return psw1 if psw1 == psw2
+      puts error_style("passwords do not much. try again")
     end
+  end
+
+  def request_password(prompt)
+    clearstring
+    print prompt + ' '
+    STDIN.noecho { |x| x.gets.chomp }
+  ensure
+    clearstring
   end
 
   private
+  private
 
-  class Command
-
-    attr :name, :description, :second_name, :dispatcher
-
-    def initialize(name, second_name, description, dispatcher)
-      @name, @second_name, @description, @dispatcher = name, second_name, description, dispatcher
-    end
-
-  end
-
-  def cmd(name1, name2, description=nil, &block)
-    if !description
-      description = name2
-      name2 = nil
-    end
-    command = Command.new(name1, name2, description, block)
-    @commands[name1] = command
-    @commands[name2] = command if name2
-  end
-
-  def init_commands
-    cmd("help", "help on supported commands. To get extended help on some command, use 'help <command>'.") { |args|
-      STDOUT.puts @option_parser.banner
-      puts ""
-      if args.empty?
-        puts "#{ANSI.bold { "Available commands:" }}\n\n"
-        cc = @commands.values.uniq
-        first_column_size = cc.map { |x| x.name.size }.max + 2
-        cc.each { |cmd|
-          description_lines =
-              first_spacer = ANSI.bold { ANSI.yellow { "%#{-first_column_size}s" % cmd.name } }
-          next_spacer = ' ' * first_column_size
-          cmd.description.word_wrap(@term_width - first_column_size).lines.each_with_index { |s, n|
-            STDOUT << (n == 0 ? first_spacer : next_spacer)
-            STDOUT.puts s
-          }
-
-        }
+  def delete_keys(keys)
+    keys.each { |kr|
+      show_record kr
+      print warning_style { "Are you sure to delete this key? [Ny] " }
+      if %w[y Y].include?(STDIN.readline.chomp)
+        print "deleting..."
+        keyring.delete_key kr.key
+        clearstring
+        puts warning_style("\nkey has been deleted\n")
       else
-        puts "-- not yet ready"
+        puts "skipped"
       end
     }
+  end
 
-    cmd("list", "l", "show contents of the keyring")
+  def show_record(kr)
+    puts ANSI.bold { ANSI.green { kr.tag } } || ANSI.faint { "(no tag)" }
+    puts "\t#{ANSI.bold { kr.key.short_address.to_s }}"
+    puts "\t#{ANSI.bold { kr.key.long_address.to_s }}"
+    if !kr.data.empty?
+      puts "\t#{kr.data.inspect}"
+    end
+    puts
+  end
+
+  def load_key(file_name, password = nil)
+    packed = open(file_name, 'rb') { |f| f.read } rescue open(file_name + ".private.unikey", 'rb') { |f| f.read }
+    # NO password?
+    key = Universa::PrivateKey.from_packed(packed) rescue nil
+    key and return key
+    print ANSI.faint("decrypting the key...")
+    if password
+      key = Universa::PrivateKey.from_packed(packed, password: password) rescue nil
+      clearstring()
+      key and return key
+      puts error_style("wrong password")
+    end
+    while !key do
+      password = request_password("\rPlease enter password for #{file_name}:")
+      print ANSI.faint("\rdecrypting the key...")
+      key = Universa::PrivateKey.from_packed(packed, password: password) rescue nil
+      clearstring()
+      key or puts error_style("wrong password")
+    end
+    key
+  end
+
+  def clearstring()
+    print "\r" + ' ' * 80 + "\r"
   end
 
   def task(&block)
@@ -158,4 +239,3 @@ Usage:
 
 end
 
-Uniring.run()

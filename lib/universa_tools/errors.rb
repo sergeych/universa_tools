@@ -19,8 +19,10 @@ module UniversaTools
     end
   end
 
-  def error message
-    raise MessageException, message
-  end
-
 end
+
+def error(message)
+  raise UniversaTools::MessageException, message
+end
+
+

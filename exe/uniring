@@ -10,3 +10,5 @@ rescue LoadError => e
 end
 
 require 'universa_tools/uniring'
+
+Uniring.new.run()

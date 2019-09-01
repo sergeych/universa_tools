@@ -1,52 +1,86 @@
 require 'universa_tools/keyring'
+require 'universa_tools/uniring'
+
+class ExitException < Exception
+  attr :exit_code
+
+  def initialize(code)
+    @exit_code = code
+  end
+end
+
+alias :old_exit :exit
+
+$exit_hooked = false
+
+def exit(code = 0)
+  if $exit_hooked
+    raise ExitException.new(code)
+  else
+    old_exit(code)
+  end
+end
 
 module UniversaTools
 
-RSpec.describe UniversaTools do
+  RSpec.describe "uniring utility" do
 
-  before :all do
-    @tmpfolder = File.expand_path('./tmp/testrings')
-    FileUtils.mkdir_p(@tmpfolder)
+    include TestKeys
+
+    before :all do
+      @keyring_path = File.expand_path('./tmp/testrings')
+      FileUtils.mkdir_p(@keyring_path)
+      $exit_hooked = true
+      @pwd = "sic_transit_and_shit_happens"
+    end
+
+    after :all do
+      $exit_hooked = false
+    end
+
+    before :each do
+      FileUtils.rm_rf Dir.glob("#@keyring_path/*")
+    end
+
+    include TestKeys
+
+    it "shows help" do
+      start "-h"
+    end
+
+    it "creates empty ring" do
+      start "-p #{@pwd} --init #@keyring_path"
+      # start "-p #{@pwd} -l #@keyring_path"
+      # KeyRing.new(@keyring_path, password: @pwd).keys.size.should == 0
+    end
+
+    it "add keys" do
+      keypass = '1;23klj4'
+      f1 = make_key_file(0, keypass)
+      f2 = make_key_file(1, keypass)
+      p f1
+      p f2
+      start "-p #{@pwd} --init #@keyring_path"
+      start "-p #{@pwd} --add #{f1}:#{keypass} --add tag2,#{f2}:#{keypass} -l #@keyring_path"
+    end
+
+    def make_key_file(n, password = "keypass123")
+      FileUtils.mkdir_p "./tmp/teskteys"
+      file_name = "./tmp/teskteys/test_#{n}.private.unikey"
+      unless File.exists?(file_name)
+        open(file_name, 'wb') { |f| f << test_keys[n].pack_with_password(password, 100) }
+      end
+      file_name
+    end
+
+    def start cmdline
+      begin
+        ARGV.replace cmdline.split(/\s+/)
+        Uniring.new.run()
+      rescue ExitException => e
+        e.exit_code
+      end
+    end
+
   end
-
-  before :each do
-    FileUtils.rm_rf Dir.glob("#@tmpfolder/*")
-  end
-
-  include TestKeys
-
-  it "creates new ring" do
-    expect(->{KeyRing.new(@tmpfolder)}).to raise_error(NotFoundException)
-    kr = KeyRing.new(@tmpfolder, generate: true, password: '123123')
-
-    kr.add_key test_keys[0], "sample tag1", foo: 'bar'
-    kr.add_key test_keys[2], "sample tag2", bar: 'baz', baz: 'foo'
-    kr.add_key test_keys[3], "sample tag3"
-
-    # duplicate tag error
-    expect(->{kr.add_key test_keys[3], "sample tag4"}).to raise_error(ArgumentError)
-    # duplicate key error
-    expect(->{kr.add_key test_keys[4], "sample tag1"}).to raise_error(ArgumentError)
-
-    kr1 = KeyRing.new(@tmpfolder, password: "123123")
-    kr1["sample tag1"].should == test_keys[0]
-    kr1["sample tag2"].should == test_keys[2]
-    kr1["sample tag3"].should == test_keys[3]
-
-    kr1.add_key test_keys[1], "sample tag1-1", foo: 'bar'
-    kr1["sample tag1-1"].should == test_keys[1]
-
-    puts `ls #@tmpfolder/`
-  end
-
-  it "suports readonly" do
-    kr = KeyRing.new(@tmpfolder, generate: true, password: '123123')
-    kr.add_key test_keys[0], "sample tag1", foo: 'bar'
-
-    kr1 = KeyRing.new(@tmpfolder, readonly: true, password: "123123")
-    expect(->{kr1.add_key test_keys[1], "sample tag1-1", foo: 'bar'}).to raise_error(IOError)
-  end
-
-
-end
 end
