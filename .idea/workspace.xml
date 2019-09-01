@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/universa_tools/semantic_version.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/keying_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exe/uniring" beforeDir="false" afterPath="$PROJECT_DIR$/exe/uniring" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/universa_tools/commons.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/commons.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/universa_tools/errors.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/errors.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/universa_tools/keyring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/keyring.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/universa_tools/version.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/version.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/uniring_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/uniring_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/universa_tools.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/universa_tools.gemspec" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -261,7 +251,7 @@
       <workItem from="1566484011256" duration="10407000" />
       <workItem from="1566652054854" duration="6251000" />
       <workItem from="1566918610808" duration="6926000" />
-      <workItem from="1567097255700" duration="35899000" />
+      <workItem from="1567097255700" duration="36546000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1566484458753</created>
@@ -319,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567256655924</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="first working version. KeyRing class and uniring CLI interface to it.">
+      <created>1567373962400</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1567373962400</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,7 +344,8 @@
     <MESSAGE value="Minimally usable KeyRng" />
     <MESSAGE value="spec fixed" />
     <MESSAGE value="more specs" />
-    <option name="LAST_COMMIT_MESSAGE" value="more specs" />
+    <MESSAGE value="first working version. KeyRing class and uniring CLI interface to it." />
+    <option name="LAST_COMMIT_MESSAGE" value="first working version. KeyRing class and uniring CLI interface to it." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

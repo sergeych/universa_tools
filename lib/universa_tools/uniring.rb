@@ -66,11 +66,12 @@ Usage:
         @allow_all = true
       }
 
-      opts.on("-p PASSWORD", "--password PASSWORD", "specify password in the command line") { |x|
+      opts.on("-p PASSWORD", "--password PASSWORD", "specify keyring password in the command line") { |x|
         @password = x
       }
 
-      opts.on("-a [TAG,]KEY_FILE", "--add [TAG,]KEYFILE", Array) { |tag, file_name|
+      opts.on("-a [TAG,]KEY_FILE", "--add [TAG,]KEYFILE", Array, "add key from a file, with optional tag",
+              "tag could be used to select keys in extract/sign/delete operations") { |tag, file_name|
         task {
           if !file_name
             tag, file_name = file_name, tag
@@ -105,7 +106,7 @@ Usage:
         end
       } }
 
-      opts.on("-l", "--list") {
+      opts.on("-l", "--list", "show keys in a ring") {
         task {
           keyring # this may ask for password so do it first
           puts "--" * 40
