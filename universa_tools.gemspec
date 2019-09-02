@@ -10,9 +10,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["real.sergeych@gmail.com"]
 
   spec.summary       = %q{Universa blockchain tools}
-  spec.description   = %q{Extended command line and library tools to deal with Universa blockchain. Based on unversa gem}
+  spec.description   = %q{Extended command line and library tools to deal with Universa blockchain.}
   spec.homepage      = "https://github.com/sergeych/universa_tools"
   spec.license       = "MIT"
+  spec.required_ruby_version = '>= 2.6'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

@@ -44,7 +44,7 @@ class Uniring
   def init_opts &initializer
     @option_parser = OptionParser.new { |opts|
       opts.banner = <<-End
-#{ANSI.bold { "\nUniversa KeyRing tool #{UniversaTools::VERSION} over #{Universa::VERSION}" }}
+#{ANSI.bold { "\nUniversa KeyRing tool #{UniversaTools::VERSION}, Universa core #{Universa::VERSION}" }}
       End
       @usage = <<-End
       

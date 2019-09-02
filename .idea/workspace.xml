@@ -4,6 +4,7 @@
     <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/universa_tools.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/universa_tools.gemspec" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +252,7 @@
       <workItem from="1566484011256" duration="10407000" />
       <workItem from="1566652054854" duration="6251000" />
       <workItem from="1566918610808" duration="6926000" />
-      <workItem from="1567097255700" duration="36546000" />
+      <workItem from="1567097255700" duration="37645000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1566484458753</created>
@@ -316,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567373962400</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="missing docs">
+      <created>1567374720298</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1567374720298</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +353,8 @@
     <MESSAGE value="spec fixed" />
     <MESSAGE value="more specs" />
     <MESSAGE value="first working version. KeyRing class and uniring CLI interface to it." />
-    <option name="LAST_COMMIT_MESSAGE" value="first working version. KeyRing class and uniring CLI interface to it." />
+    <MESSAGE value="missing docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="missing docs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
