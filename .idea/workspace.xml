@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="">
+    <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="gesmpec requirement for ruby 2.6+">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/universa_tools.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/universa_tools.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -252,7 +251,7 @@
       <workItem from="1566484011256" duration="10407000" />
       <workItem from="1566652054854" duration="6251000" />
       <workItem from="1566918610808" duration="6926000" />
-      <workItem from="1567097255700" duration="37645000" />
+      <workItem from="1567097255700" duration="39774000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1566484458753</created>
@@ -324,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567374720298</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="gesmpec requirement for ruby 2.6+">
+      <created>1567412117627</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1567412117627</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +360,8 @@
     <MESSAGE value="more specs" />
     <MESSAGE value="first working version. KeyRing class and uniring CLI interface to it." />
     <MESSAGE value="missing docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="missing docs" />
+    <MESSAGE value="gesmpec requirement for ruby 2.6+" />
+    <option name="LAST_COMMIT_MESSAGE" value="gesmpec requirement for ruby 2.6+" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
