@@ -19,10 +19,12 @@ module UniversaTools
     end
   end
 
-end
+  class InsufficientFundsException < CodeException
+    def initialize
+      super(:insufficient_funds)
+    end
+  end
 
-def error(message)
-  raise UniversaTools::MessageException, message
 end
 
 

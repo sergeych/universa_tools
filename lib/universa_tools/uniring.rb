@@ -12,9 +12,9 @@ include Universa
 # Show help it nothing to do
 # ARGV << "-h" if ARGV == []
 
-
 class Uniring
 
+  include UniversaTools::Commons
   include UniversaTools
 
   attr :option_parser
@@ -214,14 +214,14 @@ Usage:
       key = Universa::PrivateKey.from_packed(packed, password: password) rescue nil
       clearstring()
       key and return key
-      puts error_style("wrong password")
+      puts error_style("wrong password or corrupted key file")
     end
     while !key do
       password = request_password("\rPlease enter password for #{file_name}:")
       print ANSI.faint("\rdecrypting the key...")
       key = Universa::PrivateKey.from_packed(packed, password: password) rescue nil
       clearstring()
-      key or puts error_style("wrong password")
+      key or puts error_style("wrong password or corrupted key file")
     end
     key
   end

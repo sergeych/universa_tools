@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'universa', ">= 3.11.4.4"
+  spec.add_dependency 'universa', ">= 3.12.0.2"
   spec.add_dependency 'ansi'
   spec.add_dependency 'facets'
 

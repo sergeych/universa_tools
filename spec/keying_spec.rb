@@ -37,6 +37,9 @@ module UniversaTools
       kr1.add_key test_keys[1], "sample tag1-1", foo: 'bar'
       kr1["sample tag1-1"].should == test_keys[1]
 
+      kr1[test_keys[2].short_address].should == test_keys[2]
+      kr1["very bad tag"].should be_nil
+
         # puts `ls #@tmpfolder/`
     end
 

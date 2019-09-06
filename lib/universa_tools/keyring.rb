@@ -17,6 +17,8 @@ module UniversaTools
   # itself in the unsafe containers (dropbox, github, google disk, etc.)
   class KeyRing
 
+    include Commons
+
     attr :keys
 
     # The record class that hold key, tag and associated information inside the ring
@@ -79,7 +81,7 @@ module UniversaTools
       if @key_addresses[key.short_address] || @key_addresses[key.long_address]
         raise ArgumentError, "key is already in the ring"
       end
-      kr = KeyRecord.new(tag, key, key_data, create_temp_file_name('data'))
+      kr = KeyRecord.new(tag, key, key_data, create_temp_file_name(@root_path, 'data'))
       kr.save(@main_key)
       @keys << kr
       @key_tags[tag] = kr
@@ -101,8 +103,9 @@ module UniversaTools
       }
     end
 
-    # Find a key by tag or address
-    # @param [String | KeyAddress] tag_or_address to look for
+    # Find a key by tag or address.
+    # @param [String | KeyAddress] tag_or_address to look for. String could be a tag or string representation of
+    #            KeyAddress
     # @return [PrivateKey] or nil
     def [](tag_or_address)
       find(tag_or_address)&.key
@@ -139,7 +142,7 @@ module UniversaTools
     # delete the key off the ring
     # @raise [NotFoundException] if such a key is not in the ring
     def delete_key key
-      record = @keys.find { |r| r.key == key}
+      record = @keys.find { |r| r.key == key }
       record or raise NotFoundException
       record.tag && @key_tags.delete(record.tag)
       @key_addresses.delete(record.key.long_address)
@@ -151,14 +154,13 @@ module UniversaTools
     private
 
     def find(tag_or_address)
-      @key_tags[tag_or_address] || @key_addresses[tag_or_address]
-    end
-
-    def create_temp_file_name extension
-      loop do
-        name = "#{@root_path}/#{17.random_alnums}.#{extension}"
-        return name if !File.exists?(name)
-      end
+      k = @key_tags[tag_or_address] and return k
+      address = tag_or_address.is_a?(Universa::KeyAddress) ? tag_or_address : Universa::KeyAddress.new(tag_or_address)
+      @keys.select { |kr| address.isMatchingKey(kr.key.public_key) }.first
+    rescue Farcall::RemoteError
+      raise $! if $!.message !~ /IllegalArgumentException/
+      # it is just a missing tag
+      nil
     end
 
     def console_password_input(prompt)
