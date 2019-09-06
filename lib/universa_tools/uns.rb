@@ -9,7 +9,7 @@ module UniversaTools
     # @raise [ArgumentError] if name contains unprocessable characters
     def self.reduce(name)
       # step 1: remove space and punctuation, step 2: NFKD
-      name = name.downcase.strip.gsub(/([-_=+()*&^%$#@!±§~`<,>\/|?'";:{}\[\]"']|\s)+/, '_').unicode_normalize(:nfkd)
+      name = name.downcase.strip.gsub(/([-_=+()*&^%#@±§~`<,>\/?'";:{}\[\]"']|\s)+/, '_').unicode_normalize(:nfkd)
       # step 3: XLAT1: removing composing characters and ligatures
       name = name.chars.map { |x| xlat1[x] || x }.join('')
       # step 4: reduce to glyph archetype
@@ -174,12 +174,12 @@ a:z
 
 # Now replace similar glyphs to archetypes:
 
-il1 1
-o0ø 0
-u   v
-w   vv
-s   5
-b   6
+il1|! 1
+o0ø   0
+u     v
+w     vv
+$s    5
+b     6
 
 # Punctuation placeholder:
 _
