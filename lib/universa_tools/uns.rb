@@ -23,7 +23,18 @@ module UniversaTools
     end
 
     def self.xlat2
-      @xlat2 ||= read_xlat(DEFAULT_XLAT2, :self)
+      @xlat2 ||= begin
+        result = read_xlat(DEFAULT_XLAT2, :self)
+        read_xlat(DEFAULT_XLAT2_FINALIZER, :self).each { |final_key, final_value|
+          # finalizer algorithm: if it overrides result's value, alter it
+          # not effective at build time, but more effective when processing strings
+          # update all existing values according to final update table
+          affected_keys = result.select { |k, v| v == final_key }.keys
+          affected_keys.each { |k| result[k] = final_value }
+          result[final_key] = final_value
+        }
+        result
+      end
     end
 
     private
@@ -45,22 +56,22 @@ module UniversaTools
           if line != ''
             left, right = line.split(/\s+/)
             case left
-             when /^(.+):(.+)$/
-              # range
-              start, stop = decode($1), decode($2)
-              (start[0]..stop[0]).each { |code|
-                ch = code.chr(Encoding::UTF_8)
-                all[ch] = right || (missing == :self ? ch : missing)
-              }
-            when /^(?!U\+)/
-              # sequence characters or single character
-              left.chars.each { |ch|
-                all[ch] = right || (missing == :self ? ch : missing)
-              }
-            else
-              # single character un U+00000 form
-              right ||= (missing == :self ? left : right)
-              all[decode(left)[1]] = right
+              when /^(.+):(.+)$/
+                # range
+                start, stop = decode($1), decode($2)
+                (start[0]..stop[0]).each { |code|
+                  ch = code.chr(Encoding::UTF_8)
+                  all[ch] = right || (missing == :self ? ch : missing)
+                }
+              when /^(?!U\+)/
+                # sequence characters or single character
+                left.chars.each { |ch|
+                  all[ch] = right || (missing == :self ? ch : missing)
+                }
+              else
+                # single character un U+00000 form
+                right ||= (missing == :self ? left : right)
+                all[decode(left)[1]] = right
             end
           end
         rescue Exception
@@ -141,20 +152,20 @@ DEFAULT_XLAT2 = <<END
 е e
 ж x
 з 3
-и v
+и u
 к k
-л
+л n
 м m
 н h
-о 0
-п
+о o
+п n
 р p
 с c
 т t
 у y
 ф
 х x
-ц
+ц u
 ч 4
 ш
 щ ш
@@ -162,11 +173,23 @@ DEFAULT_XLAT2 = <<END
 ы bi
 э 3
 ю io
-я
+я 9
 
+# Other national languages for characters that will not be
+# normalized with NFKD to latin set. Do not put here any
+# characters with diacritic modifications removed by NFKD normalization.
+
+END
+
+DEFAULT_XLAT2_FINALIZER = <<END
 #
-# English correcting similar-looking glyphs
+# Final similarity corrections table
 #
+# English correcting similar-looking glyphs. This section MUST be the last
+# AND should altrer XLAT 2 table the following way:
+#
+# foreach ch in final
+# - if xlat2[*] = 
 
 # first init all with self, for simplicity:
 a:z
@@ -174,12 +197,12 @@ a:z
 
 # Now replace similar glyphs to archetypes:
 
-il1|! 1
-o0ø   0
-u     v
-w     vv
-$s    5
-b     6
+il1|!  1
+o0øº   0
+u      v
+w      vv
+$s     5
+b      6
 
 # Punctuation placeholder:
 _

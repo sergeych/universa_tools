@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/spec/uns_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/universa_tools/uns.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/uns.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/universa_tools_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/universa_tools_spec.rb" afterDir="false" />
     </list>
@@ -27,7 +29,7 @@
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ruby&#10;JavaScript 1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/spec" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -42,8 +44,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/universa_tools" />
       <recent name="$PROJECT_DIR$/spec" />
+      <recent name="$PROJECT_DIR$/lib/universa_tools" />
       <recent name="$PROJECT_DIR$/exe" />
     </key>
   </component>
@@ -59,7 +61,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="RSpec.UniversaTools">
+  <component name="RunManager" selected="RSpec.UNS reduces">
     <configuration name="IRB console: universa_tools" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
       <module name="universa_tools" />
       <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
@@ -77,6 +79,72 @@
       <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$APPLICATION_HOME_DIR$/rb/testing/runner/irb.rb" />
       <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="--prompt simple" />
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UNS reduces" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+      <module name="universa_tools" />
+      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/uns_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="'**/*_spec.rb'" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="UNS reduces" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UNS" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+      <module name="universa_tools" />
+      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/uns_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="'**/*_spec.rb'" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="UNS" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
     <configuration name="UniversaTools can create UN..." type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
@@ -145,43 +213,13 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch_7" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
-      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$APPLICATION_CONFIG_DIR$/scratches" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$APPLICATION_CONFIG_DIR$/scratches/scratch_7.rb" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="uns" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
-      <module name="universa_tools" />
-      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/lib/universa_tools" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/lib/universa_tools/uns.rb" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="RSpec.UNS reduces" />
+        <item itemvalue="RSpec.UNS" />
         <item itemvalue="RSpec.UniversaTools" />
-        <item itemvalue="IRB console.IRB console: universa_tools" />
         <item itemvalue="RSpec.UniversaTools can create UN..." />
         <item itemvalue="IRB console.IRB console: universa_tools" />
-        <item itemvalue="Ruby.uns" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +242,7 @@
       <workItem from="1567097255700" duration="41011000" />
       <workItem from="1567447512704" duration="12625000" />
       <workItem from="1567724347584" duration="10000" />
-      <workItem from="1567801865613" duration="7186000" />
+      <workItem from="1567801865613" duration="9803000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1566484458753</created>
@@ -297,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567808617362</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="initial reduce implementation, improved">
+      <created>1567809088126</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1567809088126</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +375,8 @@
     <MESSAGE value="gesmpec requirement for ruby 2.6+" />
     <MESSAGE value="extended readme, added online docs to it." />
     <MESSAGE value="initial reduce implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial reduce implementation" />
+    <MESSAGE value="initial reduce implementation, improved" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial reduce implementation, improved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -348,28 +394,30 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_shows_help.rcov" NAME="uniring utility shows help Coverage Results" MODIFIED="1567296251788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@uniring.rcov" NAME="uniring Coverage Results" MODIFIED="1566914082799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/universa_tools" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@UNS.rcov" NAME="UNS Coverage Results" MODIFIED="1567849178662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring_spec.rcov" NAME="uniring_spec Coverage Results" MODIFIED="1567371103192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_add_keys.rcov" NAME="uniring utility add keys Coverage Results" MODIFIED="1567367228624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_creates_new_ring.rcov" NAME="UniversaTools creates new ring Coverage Results" MODIFIED="1567256636642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@UniversaTools.rcov" NAME="UniversaTools Coverage Results" MODIFIED="1567809072524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_makes_pbkdf2_KR.rcov" NAME="UniversaTools makes pbkdf2 KR Coverage Results" MODIFIED="1567166457196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_creates_emp___.rcov" NAME="uniring utility creates emp... Coverage Results" MODIFIED="1567296357954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility.rcov" NAME="uniring utility Coverage Results" MODIFIED="1567369219760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_suports_readonly.rcov" NAME="UniversaTools suports readonly Coverage Results" MODIFIED="1567256639449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_creates_emp_____1_.rcov" NAME="uniring utility creates emp... (1) Coverage Results" MODIFIED="1567342698032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@All_specs_in_spec__universa_tools.rcov" NAME="All specs in spec: universa_tools Coverage Results" MODIFIED="1567493670185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_can_create_UN___.rcov" NAME="UniversaTools can create UN... Coverage Results" MODIFIED="1567848976512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@keying_spec.rcov" NAME="keying_spec Coverage Results" MODIFIED="1567466681075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@fix.rcov" NAME="fix Coverage Results" MODIFIED="1566936576002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Nextcloud/xchange support cases/0001-2019-01-Dimmao" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@IRB_console__universa_tools.rcov" NAME="IRB console: universa_tools Coverage Results" MODIFIED="1567808535917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@uniring.rcov" NAME="uniring Coverage Results" MODIFIED="1566914082799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/universa_tools" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_add_keys.rcov" NAME="uniring utility add keys Coverage Results" MODIFIED="1567367228624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_creates_new_ring.rcov" NAME="UniversaTools creates new ring Coverage Results" MODIFIED="1567256636642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@UniversaTools.rcov" NAME="UniversaTools Coverage Results" MODIFIED="1567849174960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_serialized_in___.rcov" NAME="UniversaTools serialized in... Coverage Results" MODIFIED="1567166819227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_can_be_re_sav___.rcov" NAME="UniversaTools can be re-sav... Coverage Results" MODIFIED="1567189309931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@UNS_reduces.rcov" NAME="UNS reduces Coverage Results" MODIFIED="1568079757574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@u_wallet_constructs.rcov" NAME="u_wallet constructs Coverage Results" MODIFIED="1567466370705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@ecrypted_record_spec.rcov" NAME="ecrypted_record_spec Coverage Results" MODIFIED="1567176607842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uctool.rcov" NAME="uctool Coverage Results" MODIFIED="1566939090919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/exe" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@KeyRing.rcov" NAME="KeyRing Coverage Results" MODIFIED="1567368477544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@All_specs_in_spec__universa_tools.rcov" NAME="All specs in spec: universa_tools Coverage Results" MODIFIED="1567493670185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@KeyRing_creates_new_ring.rcov" NAME="KeyRing creates new ring Coverage Results" MODIFIED="1567465475995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_can_create_UN___.rcov" NAME="UniversaTools can create UN... Coverage Results" MODIFIED="1567807973286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@keying_spec.rcov" NAME="keying_spec Coverage Results" MODIFIED="1567466681075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@fix.rcov" NAME="fix Coverage Results" MODIFIED="1566936576002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Nextcloud/xchange support cases/0001-2019-01-Dimmao" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UnsService.rcov" NAME="UnsService Coverage Results" MODIFIED="1567802448797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/universa_tools" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@IRB_console__universa_tools.rcov" NAME="IRB console: universa_tools Coverage Results" MODIFIED="1567808535917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
   </component>
 </project>
