@@ -1,5 +1,6 @@
 module UniversaTools
 
+  # Tools to work with UNS contracts, part or parsec protocols family
   class UNS
 
     # reduce string to its glyph archetypes removing any homological similarities and ambiguity
@@ -17,7 +18,7 @@ module UniversaTools
         xlat2[ch] or raise ArgumentError, "illegal character: #{ch.ord}:'#{ch}' in #{name.inspect}"
       }.join('')
     end
-
+private
     def self.xlat1
       @xlat1 ||= read_xlat(DEFAULT_XLAT1, '')
     end
@@ -36,8 +37,6 @@ module UniversaTools
         result
       end
     end
-
-    private
 
     def self.decode(char)
       char.strip!

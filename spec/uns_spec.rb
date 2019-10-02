@@ -18,12 +18,12 @@ module UniversaTools
     end
 
     it "creates UNS contract" do
+      skip "awaits rewrite"
       # key = test_keys[0]
       # cli = Universa::Service.client
       # uns = Universa::UnsContract.new(key)
       # uns.attachToNetwork(network)
       # pp UNS.xlat1
-      skip
     end
 
   end

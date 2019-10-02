@@ -17,7 +17,13 @@ path.unicon~  # sometimes, previous version
 
 module UniversaTools
 
-  # Under construction. FS-based U wallet
+  class Universa::Parcel
+    static_method :of
+    static_method :unpack
+  end
+
+  # Under construction. FS-based U wallet. This version misses support for multiple-resulting paying parcel
+  # operation, so it will be completely reqwritten. Please do not use.
   class UWallet
     include Universa
 
@@ -46,7 +52,11 @@ module UniversaTools
 
     def register contract
       @mutex.synchronize {
-        units = contract.getProcessedCost()
+        contract.check or raise ArgumentError, "contract is not OK"
+        units = contract.getProcessedCostU()
+        puts "cost #{units}"
+        parcel = Universa::Parcel.of(contract, @u, [@key])
+        p parcel
         raise InsufficientFundsException if units > balance
         # @client.2
       }
@@ -54,7 +64,7 @@ module UniversaTools
 
     private
 
-    def restore_state path
+    def restore_state(path)
       @current_name = File.expand_path path
       # current path may not exist if the, say commit or rollback operation were interrupted
       if File.exists?(@current_name)

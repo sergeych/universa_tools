@@ -170,4 +170,22 @@ class Integer
   end
 end
 
+class Numeric
+  def seconds
+    self
+  end
+
+  def minutes
+    self*60
+  end
+
+  def hours
+    self*3600
+  end
+
+  def days
+    self*86400
+  end
+end
+
 
