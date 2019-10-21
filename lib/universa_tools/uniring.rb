@@ -78,6 +78,9 @@ Usage:
           end
           file_name, password = file_name.split(':', 2)
           begin
+            # TODO: REQUIRE TAG
+            # TODO: REQUIRE FORCE or prompt to update tag
+            # TODO: separate tag from this parameter - too hard to use
             keyring.add_key load_key(file_name, password), tag
             puts success_style("\nKey added\n")
           rescue ArgumentError

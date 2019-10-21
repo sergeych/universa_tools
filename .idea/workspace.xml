@@ -4,6 +4,7 @@
     <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/universa_tools.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/universa_tools.gemspec" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -258,7 +259,7 @@
       <workItem from="1568079682395" duration="4917000" />
       <workItem from="1568278985272" duration="260000" />
       <workItem from="1570002431639" duration="1461000" />
-      <workItem from="1571653188595" duration="8743000" />
+      <workItem from="1571653188595" duration="9618000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1566484458753</created>
@@ -379,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571663189968</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="cosmetics in uniring CLI">
+      <created>1571664317094</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1571664317094</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +424,8 @@
     <MESSAGE value="corrected UNS.reduce tables, after voting for цяb subst" />
     <MESSAGE value="Supplimantary version to provide coorrected UNS.reduce only" />
     <MESSAGE value="improved uniring utility" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved uniring utility" />
+    <MESSAGE value="cosmetics in uniring CLI" />
+    <option name="LAST_COMMIT_MESSAGE" value="cosmetics in uniring CLI" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_shows_help.rcov" NAME="uniring utility shows help Coverage Results" MODIFIED="1567296251788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
