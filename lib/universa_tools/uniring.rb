@@ -164,7 +164,7 @@ Usage:
             raise e
           end
         ensure
-          print "\r" + ' ' * 79 + "\r"
+          print "\r" + ' ' * 20 + "\r"
         end
   end
 
@@ -179,6 +179,8 @@ Usage:
       return psw1 if psw1 == psw2
       puts error_style("passwords do not much. try again")
     end
+  ensure
+    clearstring
   end
 
   def request_password(prompt)
@@ -189,7 +191,6 @@ Usage:
     clearstring
   end
 
-  private
   private
 
   def delete_keys(keys)
@@ -240,7 +241,7 @@ Usage:
   end
 
   def clearstring()
-    print "\r" + ' ' * 80 + "\r"
+    print "\r" + ' ' * 120 + "\r"
   end
 
   def task(&block)
