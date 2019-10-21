@@ -13,3 +13,5 @@
 /Gemfile.lock
 /tmp/*
 /sample.private.unikey
+!/spec/fixtures/copy_old_keyring/
+/spec/fixtures/copy_old_keyring/uniring.unirecord

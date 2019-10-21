@@ -58,9 +58,9 @@ Usage:
       End
       opts.separator ""
 
-      opts.on("--term-with SIZE", "set terminal width to specified size when formatting output, default is taken from the terminal and is currently #@term_width.") { |size|
-        @term_width = size
-      }
+      # opts.on("--term-with SIZE", "override terminal width to specified size when formatting output, default is taken from the terminal and is currently #@term_width.") { |size|
+      #   @term_width = size
+      # }
 
       opts.on("--all", "allow delete/update more than one key at a time") {
         @allow_all = true
@@ -111,6 +111,7 @@ Usage:
           keyring # this may ask for password so do it first
           puts "--" * 40
           puts ANSI.yellow { "KeyRing v.#{keyring.version.to_s}: " } + ANSI.bold { @keyring_path }
+          puts ANSI.yellow { "fingerprint:     " } + ANSI.bold{ ANSI.green { keyring.fingerprint } }
           puts "--" * 40
           keyring.keys.sort_by { |x| x&.tag || '' }.each(&method(:show_record))
           if (keyring.keys.size > 0)
@@ -119,6 +120,18 @@ Usage:
           else
             puts "\nno keys\n"
           end
+        }
+      }
+
+      opts.on("-x", "--change-password [NEW_PASSWORD]",
+              "change password. if the password it not specified, it ",
+              "will be requested. Don't forget to use -- to separate",
+              "this option from the repository name when needed") { |np|
+        task {
+          kr = keyring
+          new_password = np || request_password2("enter new password")
+          kr.change_password new_password
+          puts "password has been changed"
         }
       }
 

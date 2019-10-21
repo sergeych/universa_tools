@@ -104,6 +104,13 @@ class Pbkdf2CryptoRecord < CryptoRecord
     derive_key(password).eta_decrypt(@ciphertext)
   end
 
+  def try_decrypt(password)
+    decrypt(password)
+  rescue Farcall::RemoteError
+    nil
+  end
+
+
   protected
 
   def derive_key(password)

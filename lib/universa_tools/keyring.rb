@@ -19,7 +19,7 @@ module UniversaTools
 
     include Commons
 
-    attr :keys
+    attr :keys, :fingerprint
 
     # The record class that hold key, tag and associated information inside the ring
     KeyRecord = Struct.new(:tag, :key, :data, :file_name) do
@@ -31,6 +31,12 @@ module UniversaTools
         code, tag, packed, data = open(file_name, 'rb') { |f| Boss.load(main_key.etaDecrypt(f.read)) }
         code != 0 and raise IOError, "unsupported record format #{code}"
         KeyRecord.new(tag, Universa::PrivateKey.from_packed(packed), data, file_name)
+      end
+    end
+
+    def system_config
+      @system_config ||= begin
+        YAML.load_file File.expand_path("~/.universa/keyring_config.yml") rescue nil
       end
     end
 
@@ -151,6 +157,13 @@ module UniversaTools
       FileUtils.rm_f record.file_name
     end
 
+    def change_password new_password
+      will_write!
+      @main_record = Pbkdf2CryptoRecord.new(hint: 'main password', salt: 42.random_alnums)
+      @main_record.encrypt(new_password, @main_key.pack)
+      write_config()
+    end
+
     private
 
     def find(tag_or_address)
@@ -188,7 +201,6 @@ module UniversaTools
 
     def write_config
       will_write!
-      # todo: safe overwrite
       delete_file(backup_file_name)
       FileUtils.mv(config_file_name, backup_file_name) if File.exists?(config_file_name)
       open(config_file_name, 'wb') { |x|
@@ -223,7 +235,12 @@ module UniversaTools
     def read_config
       try_read(config_file_name)
       @main_record or raise IOError("main key not found")
-      @main_key = Universa::SymmetricKey.new(@main_record.decrypt(request_password("password to open repository")))
+      unpacked = nil
+      if (pwd=system_config&.dig("keyrings", @fingerprint, "password")) != nil
+        unpacked = @main_record.try_decrypt(pwd)
+      end
+      unpacked ||= @main_record.decrypt(request_password("password to open repository"))
+      @main_key = Universa::SymmetricKey.new(unpacked)
     rescue IOError
       # potentially recoverable
       puts error_style("failed to open keyring: #$!")
@@ -240,6 +257,10 @@ module UniversaTools
         @crypto_records = CryptoRecord.unpack_all(parser.get)
         @main_record = @crypto_records.find { |r| r.is_a?(Pbkdf2CryptoRecord) }
       }
+      @fingerprint = @header['fingerprint']&.freeze or begin
+        @header['fingerprint'] = @fingerprint = 31.random_alnums.freeze
+        write_config()
+      end
     end
 
     # creates new record if no exist. Does not wipe existing ring.
@@ -250,9 +271,10 @@ module UniversaTools
       FileUtils.chmod(0700, @root_path)
 
       @main_key = Universa::SymmetricKey.new()
-      @main_record = Pbkdf2CryptoRecord.new(hint: 'main password')
+      @main_record = Pbkdf2CryptoRecord.new(hint: 'main password', salt: 42.random_alnums)
       @main_record.encrypt request_password("main password for the new keyring"), @main_key.pack
-      @header = {tag: 'uniring', version: '0.1.0'}
+      @fingerprint = 31.random_alnums.freeze
+      @header = {tag: 'uniring', version: '0.1.0', fingerprint: @fingerprint}
       write_config()
     end
 

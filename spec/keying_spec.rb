@@ -6,6 +6,7 @@ module UniversaTools
 
     before :all do
       @tmpfolder = File.expand_path('./tmp/testrings')
+      @fixtures_folder = File.expand_path('./spec/fixtures')
       FileUtils.mkdir_p(@tmpfolder)
     end
 
@@ -51,6 +52,28 @@ module UniversaTools
       expect(-> { kr1.add_key test_keys[1], "sample tag1-1", foo: 'bar' }).to raise_error(IOError)
     end
 
+    it "has fingerprint" do
+      # prepare old keyring - copy it to not to modify in place
+      puts @fixtures_folder
+      FileUtils.cp_r(@fixtures_folder+"/old_keyring", @tmpfolder)
+      dest = @tmpfolder + "/old_keyring"
+      FileUtils.chmod(0600, Dir[dest+"/*"])
+      kr = KeyRing.new(dest, password: "12341234")
+      kr.fingerprint.should_not be_nil
+      p kr.fingerprint
+      kr2 = KeyRing.new(dest, password: "12341234")
+      kr2.fingerprint.should == kr.fingerprint
+    end
+
+    it "changes password" do
+      kr = KeyRing.new(@tmpfolder, generate: true, password: '123123')
+      kr.add_key test_keys[0], "sample tag1", foo: 'bar'
+      k1 = kr["sample tag1"]
+      kr.change_password '11223344'
+      expect(->{KeyRing.new(@tmpfolder, password: '123123')}).to raise_error(Farcall::RemoteError)
+      kr2 = KeyRing.new(@tmpfolder, password: '11223344')
+      kr2["sample tag1"].should == k1
+    end
 
   end
 end

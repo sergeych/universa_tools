@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="corrected UNS.reduce tables, after voting for цяb subst">
+    <list default="true" id="b5de240c-a3f4-4e4f-a942-24748bb7a400" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/spec/fixtures/old_keyring/uniring.unirecord" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/universa_tools/commons.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/commons.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/universa_tools/u_wallet.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/u_wallet.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/universa_tools/uns.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/uns.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/universa_tools/crypto_record.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/crypto_record.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/universa_tools/keyring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/keyring.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/uniring.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/universa_tools/version.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/universa_tools/version.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/u_wallet_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/u_wallet_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/uns_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/uns_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/universa_tools.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/universa_tools.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/keying_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/keying_spec.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +44,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -66,25 +66,6 @@
     </option>
   </component>
   <component name="RunManager" selected="RSpec.All specs in spec: universa_tools">
-    <configuration name="IRB console: universa_tools" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
-      <module name="universa_tools" />
-      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
-      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$" />
-      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$APPLICATION_HOME_DIR$/rb/testing/runner/irb.rb" />
-      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="--prompt simple" />
-      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
-      <method v="2" />
-    </configuration>
     <configuration name="All specs in spec: universa_tools" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <module name="universa_tools" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
@@ -118,7 +99,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="UNS reduces" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="KeyRing changes password" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="universa_tools" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -137,10 +118,43 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/uns_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/keying_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="'**/*_spec.rb'" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="UNS reduces" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="KeyRing changes password" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="KeyRing has fingerprint" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+      <module name="universa_tools" />
+      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/keying_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="'**/*_spec.rb'" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="KeyRing has fingerprint" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
@@ -220,10 +234,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="RSpec.All specs in spec: universa_tools" />
+        <item itemvalue="RSpec.KeyRing changes password" />
+        <item itemvalue="RSpec.KeyRing has fingerprint" />
         <item itemvalue="RSpec.u_wallet pays uns" />
         <item itemvalue="RSpec.u_wallet constructs" />
-        <item itemvalue="IRB console.IRB console: universa_tools" />
-        <item itemvalue="RSpec.UNS reduces" />
       </list>
     </recent_temporary>
   </component>
@@ -249,7 +263,8 @@
       <workItem from="1567801865613" duration="9803000" />
       <workItem from="1568079682395" duration="4917000" />
       <workItem from="1568278985272" duration="260000" />
-      <workItem from="1570002431639" duration="333000" />
+      <workItem from="1570002431639" duration="1461000" />
+      <workItem from="1571653188595" duration="8080000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1566484458753</created>
@@ -356,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568079790194</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Supplimantary version to provide coorrected UNS.reduce only">
+      <created>1570002794767</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1570002794767</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,25 +413,13 @@
     <MESSAGE value="initial reduce implementation" />
     <MESSAGE value="initial reduce implementation, improved" />
     <MESSAGE value="corrected UNS.reduce tables, after voting for цяb subst" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrected UNS.reduce tables, after voting for цяb subst" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/lib/universa_tools/keyring.rb</url>
-          <line>48</line>
-          <properties a="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Supplimantary version to provide coorrected UNS.reduce only" />
+    <option name="LAST_COMMIT_MESSAGE" value="Supplimantary version to provide coorrected UNS.reduce only" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_shows_help.rcov" NAME="uniring utility shows help Coverage Results" MODIFIED="1567296251788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UNS.rcov" NAME="UNS Coverage Results" MODIFIED="1567849178662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@KeyRing_changes_password.rcov" NAME="KeyRing changes password Coverage Results" MODIFIED="1571662161223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring_spec.rcov" NAME="uniring_spec Coverage Results" MODIFIED="1567371103192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_makes_pbkdf2_KR.rcov" NAME="UniversaTools makes pbkdf2 KR Coverage Results" MODIFIED="1567166457196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_creates_emp___.rcov" NAME="uniring utility creates emp... Coverage Results" MODIFIED="1567296357954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
@@ -417,11 +427,12 @@
     <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_suports_readonly.rcov" NAME="UniversaTools suports readonly Coverage Results" MODIFIED="1567256639449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_creates_emp_____1_.rcov" NAME="uniring utility creates emp... (1) Coverage Results" MODIFIED="1567342698032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@u_wallet_pays_uns.rcov" NAME="u_wallet pays uns Coverage Results" MODIFIED="1568189575664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
-    <SUITE FILE_PATH="coverage/universa_tools@All_specs_in_spec__universa_tools.rcov" NAME="All specs in spec: universa_tools Coverage Results" MODIFIED="1570002738331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@All_specs_in_spec__universa_tools.rcov" NAME="All specs in spec: universa_tools Coverage Results" MODIFIED="1571663115755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_can_create_UN___.rcov" NAME="UniversaTools can create UN... Coverage Results" MODIFIED="1567848976512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@keying_spec.rcov" NAME="keying_spec Coverage Results" MODIFIED="1567466681075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@fix.rcov" NAME="fix Coverage Results" MODIFIED="1566936576002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Nextcloud/xchange support cases/0001-2019-01-Dimmao" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@IRB_console__universa_tools.rcov" NAME="IRB console: universa_tools Coverage Results" MODIFIED="1568080543716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
+    <SUITE FILE_PATH="coverage/universa_tools@KeyRing_has_fingerprint.rcov" NAME="KeyRing has fingerprint Coverage Results" MODIFIED="1571657202439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring.rcov" NAME="uniring Coverage Results" MODIFIED="1566914082799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/universa_tools" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@uniring_utility_add_keys.rcov" NAME="uniring utility add keys Coverage Results" MODIFIED="1567367228624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
     <SUITE FILE_PATH="coverage/universa_tools@UniversaTools_creates_new_ring.rcov" NAME="UniversaTools creates new ring Coverage Results" MODIFIED="1567256636642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="universa_tools" />
